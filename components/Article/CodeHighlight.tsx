@@ -2,10 +2,8 @@ import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { anOldHope } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import classNames from 'classnames'
 
 type CodeHighlightProps = {
-    // className: string
     inline?:boolean
     children:React.ReactNode
     node:{
@@ -53,7 +51,6 @@ const useStyles = makeStyles(theme=>({
 
 export const CodeHighlight = ({node, inline, children, ...props}:CodeHighlightProps)=>{
     const className = props.className
-    // const className= 'language-javyanrascript'
     const classes = useStyles()
     const match = /language-(\w+)/.exec(className || '')
     const meta = node.data? node.data.meta: undefined

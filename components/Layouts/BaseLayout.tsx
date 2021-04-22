@@ -5,8 +5,8 @@ import { Header } from "../Header";
 let theme = createMuiTheme({
   palette: {
     common:{
-      white:'rgb(231,227,244)',
-      black:'rgb(10,10,10)',
+      white:'#fff',
+      black:"#000"
     },
     primary: {
       main: 'rgb(65,130,206)',

@@ -4,7 +4,7 @@ import path from 'path'
 import { BaseLayout } from '../../components/Layouts/BaseLayout'
 import { postFilePaths, POSTS_PATH } from '../../serverUtils/mdUtils'
 import ReactMarkdown from 'react-markdown'
-import { Paragraph, CustomLink, ArticleContainer, ArticleTitle, Heading1, Heading2, Heading3, CodeHighlight } from '../../components/Article'
+import { Paragraph, CustomLink, ArticleContainer, ArticleTitle, Heading1, Heading2, Heading3, CodeHighlight, CustomImage } from '../../components/Article'
 import {format} from 'date-fns'
 
 const components = {
@@ -14,6 +14,7 @@ const components = {
   p:Paragraph,
   a: CustomLink,
   code:CodeHighlight,
+  img: CustomImage,
 }
 
 export default function PostPage({ content, frontMatter }) {
