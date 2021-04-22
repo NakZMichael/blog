@@ -6,6 +6,7 @@ import { postFilePaths, POSTS_PATH } from '../../serverUtils/mdUtils'
 import ReactMarkdown from 'react-markdown'
 import { Paragraph, CustomLink, ArticleContainer, ArticleTitle, Heading1, Heading2, Heading3, CodeHighlight, CustomImage } from '../../components/Article'
 import {format} from 'date-fns'
+import Head from 'next/head';
 
 const components = {
   h1:Heading1,
@@ -20,6 +21,9 @@ const components = {
 export default function PostPage({ content, frontMatter }) {
   return (
     <BaseLayout>
+      <Head>
+        <title>{frontMatter.title}</title>
+      </Head>
         <ArticleContainer>
           <ArticleTitle title={frontMatter.title} />
           <main>
