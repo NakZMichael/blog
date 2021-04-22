@@ -1,0 +1,6 @@
+export { Paragraph } from './Paragraph'
+export { CustomLink } from './CustomLink'
+export { ArticleContainer } from './ArticleContainer'
+export { ArticleTitle } from './ArticleTitle'
+export { Heading1, Heading2, Heading3 } from './Headings'
+export { CodeHighlight} from './CodeHighlight'
