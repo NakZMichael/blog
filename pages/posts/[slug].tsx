@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown'
 import { Paragraph, CustomLink, ArticleContainer, ArticleTitle, Heading1, Heading2, Heading3, CodeHighlight, CustomImage } from '../../components/Article'
 import {format} from 'date-fns'
 import Head from 'next/head';
+import { useEffect, useState } from 'react'
 
 const components = {
   h1:Heading1,
@@ -19,10 +20,23 @@ const components = {
 }
 
 export default function PostPage({ content, frontMatter }) {
+  const [href, setHref] = useState("")
+
+  useEffect(()=>{
+    setHref(location.href)
+  },[])
+  
   return (
     <BaseLayout>
       <Head>
         <title>{frontMatter.title}</title>
+        <meta property="og:title" content={frontMatter.title} />
+        <meta property="og:type" content="blog" />
+        <meta property="og:url" content={href} />
+        <meta property="og:site_name" content={frontMatter.title} />
+        <meta name="twitter:card" content="blog" />
+        <meta name="twitter:title" content={frontMatter.title} />
+        <link rel="canonical" href={href} />
       </Head>
         <ArticleContainer>
           <ArticleTitle title={frontMatter.title} />

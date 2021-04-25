@@ -16,21 +16,6 @@ body {
   "Hiragino Sans",
   Meiryo,
   sans-serif ;
-
-  animation: fadeIn 1s linear;
-  animation-fill-mode: both;
-}
-
-@keyframes fadeIn{
-	0%{
-		opacity: 0;
-	}
-  70%{
-    opacity:0;
-  }
-	100%{
-		opacity: 1;
-	}
 }
 #__next{
   height: 100vh;

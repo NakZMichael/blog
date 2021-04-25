@@ -37,7 +37,7 @@ export default function Index({ posts }) {
   )
 }
 
-export async function getStaticProps():Promise<{props:{posts:Post[]} }> {
+export async function getStaticProps(){
   const posts = postFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
     const { content, data } = matter(source)
@@ -45,7 +45,7 @@ export async function getStaticProps():Promise<{props:{posts:Post[]} }> {
     const dateString = format(date,'MM/dd/yyyy')
     data.date = dateString
     const slug = getPostSlug(filePath)
-    const contentText = (removeMarkdown(String(content)) as string)
+    const contentText= removeMarkdown(String(content))
     return {
       content:contentText,
       data,

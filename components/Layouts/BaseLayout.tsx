@@ -1,31 +1,8 @@
-import { createMuiTheme, makeStyles, responsiveFontSizes, ThemeProvider } from "@material-ui/core";
+import { makeStyles} from "@material-ui/core";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 
-let theme = createMuiTheme({
-  palette: {
-    common:{
-      white:'#fff',
-      black:"#000"
-    },
-    primary: {
-      main: 'rgb(65,130,206)',
-      dark: 'rgb(128,122,214)',
-      light: 'rgb(151,194,244)'
-    },
-    secondary: {
-      main: 'rgb(184,178,232)',
-    },
-  },
-  typography:{
-    body1:{
-      fontSize:16
-    }
-  }
-});
-theme = responsiveFontSizes(theme);
-
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>({
   root:{
     minHeight:"100vh",
     position:"relative",
@@ -33,17 +10,16 @@ const useStyles = makeStyles({
     width:"100%",
     backgroundColor:theme.palette.common.white
   }
-});
+}));
 
 export const BaseLayout = ({ children }) => {
   const classes = useStyles()
     return (
       <div className={classes.root}>
-        <ThemeProvider theme={theme}>
           <Header />
           <div>{children}</div>
           <Footer />
-        </ThemeProvider>
       </div>
     )
   }
+
