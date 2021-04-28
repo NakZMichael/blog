@@ -17,7 +17,10 @@ let theme = createMuiTheme({
     },
     typography:{
       body1:{
-        fontSize:16
+        fontSize: '1.1rem',
+          '@media (min-width:600px)': {
+            fontSize: '1.2rem',
+          },
       }
     }
   });

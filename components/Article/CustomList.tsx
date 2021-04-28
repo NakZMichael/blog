@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core'
 import React from 'react'
 
 type ListProps = {
@@ -5,7 +6,11 @@ type ListProps = {
 }
 export const CustomList = (props:ListProps) => {
     return (
-        <li>{props.children}</li>
+        <li>
+            <Typography variant="body1">
+                {props.children}
+            </Typography>
+        </li>
     )
 
 }

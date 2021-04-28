@@ -26,8 +26,8 @@ const useStyles = makeStyles(theme=>({
 export const PostItem = ({post}:PostProps)=>{
     const classes = useStyles()
     let description = post.content
-    if(description.length > 300 ){
-        description = description.substr(0,300) + ' ...'
+    if(description.length > 200 ){
+        description = description.substr(0,200) + ' ...'
     }
     return (
         <Link href={post.slug}>

@@ -13,12 +13,10 @@ const useStyles = makeStyles(theme=>({
     heading1:{
         paddingBottom:theme.spacing(3),
         paddingTop:theme.spacing(3),
-        fontWeight:"bold",
     },
     heading2:{
         paddingBottom:theme.spacing(2),
         paddingTop:theme.spacing(2),
-        fontWeight:"bold",
     },
     heading3:{
         paddingBottom:theme.spacing(1),
@@ -49,7 +47,7 @@ export const Heading3 = ({children}:HeadingProps)=>{
     return (
         <div className={classes.heading3}>
             <div className={classes.pad} id={children[0]} />
-            <Typography variant="h5" component="h3">{children}</Typography>
+            <Typography variant="h5" component="h3" style={{fontWeight:"bold"}} >{children}</Typography>
         </div>
     )
 }

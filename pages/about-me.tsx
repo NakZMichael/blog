@@ -8,16 +8,13 @@ const useStyles = makeStyles(theme=>({
         // textAlign:"center"
     },
     heading:{
-        color: theme.palette.primary.dark,
-        background: `-webkit-linear-gradient(0deg, ${theme.palette.primary.dark}, rgb(234,217,241))`,
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        // textAlign:"center",
-        padding:theme.spacing(3)
+        paddingTop:theme.spacing(2),
+        paddingBottom:theme.spacing(2),
+        color:theme.palette.primary.dark,
+        WebkitTextStroke:"3px rgb(16,19,46)",
     },
     image:{
         borderRadius:"50%",
-        paddingTop:theme.spacing(3)
     }
 }))
 
@@ -38,12 +35,6 @@ export default function AboutMe(){
                 </div>
                 <Typography variant="h1" className={classes.heading} style={{fontFamily:"EricaOne"}} >
                      Hello, <br/>I am <br/> Nakazato.
-                </Typography>
-                <Typography variant="body1">
-                    グラデーションかけとけば良いんでしょ感があるので直したい。。。
-                </Typography>
-                <Typography variant="h2" style={{fontWeight:"bold",paddingBottom:"20px"}}>
-                    私について
                 </Typography>
                 <Typography variant="body1">
                     仲里というものです。
