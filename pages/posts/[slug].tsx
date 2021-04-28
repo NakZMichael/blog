@@ -79,7 +79,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      url: domain + params.slug,
+      url: domain + "posts/" + params.slug,
       content,
       description:description,
       frontMatter: data,
