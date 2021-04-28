@@ -6,6 +6,10 @@ type HeadingProps = {
 }
 
 const useStyles = makeStyles(theme=>({
+    pad:{
+        marginTop:"-80px",
+        paddingTop:"80px",
+    },
     heading1:{
         paddingBottom:theme.spacing(3),
         paddingTop:theme.spacing(3),
@@ -25,8 +29,9 @@ const useStyles = makeStyles(theme=>({
 export const Heading1 = ({children}:HeadingProps)=>{
     const classes = useStyles()
     return (
-        <div className={classes.heading1}>
-            <Typography variant="h2" component="h1" style={{fontWeight:"bold"}}>{children}</Typography>
+        <div className={classes.heading1} >
+            <div className={classes.pad} id={children[0]} />
+            <Typography variant="h2" component="h1" style={{fontWeight:"bold"}} >{children}</Typography>
         </div>
     )
 }
@@ -34,7 +39,8 @@ export const Heading2 = ({children}:HeadingProps)=>{
     const classes = useStyles()
     return (
         <div className={classes.heading2}>
-            <Typography variant="h3" component="h2" style={{fontWeight:"bold"}} >{children}</Typography>
+            <div className={classes.pad} id={children[0]} />
+            <Typography variant="h3" component="h2" style={{fontWeight:"bold"}} id={children[0]} >{children}</Typography>
         </div>
     )
 }
@@ -42,6 +48,7 @@ export const Heading3 = ({children}:HeadingProps)=>{
     const classes = useStyles()
     return (
         <div className={classes.heading3}>
+            <div className={classes.pad} id={children[0]} />
             <Typography variant="h5" component="h3">{children}</Typography>
         </div>
     )

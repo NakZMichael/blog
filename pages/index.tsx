@@ -1,12 +1,9 @@
 import { Container, makeStyles, Typography } from '@material-ui/core'
 import fs from 'fs'
 import matter from 'gray-matter'
-import Link from 'next/link'
 import path from 'path'
 import {BaseLayout} from '../components/Layouts/BaseLayout'
 import { getPostSlug, postFilePaths, POSTS_PATH } from '../serverUtils/mdUtils'
-import { Post } from '../types/Post'
-import { getFirstNTextFromMd } from '../clientUtils/postUtils'
 import removeMarkdown from 'remove-markdown'
 import { PostList } from '../components/PostList/PostList'
 import {format} from 'date-fns'
@@ -41,11 +38,11 @@ export async function getStaticProps(){
   const posts = postFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
     const { content, data } = matter(source)
+    const contentText= removeMarkdown(String(content))
     const date = new Date(data.date) 
     const dateString = format(date,'MM/dd/yyyy')
     data.date = dateString
     const slug = getPostSlug(filePath)
-    const contentText= removeMarkdown(String(content))
     return {
       content:contentText,
       data,

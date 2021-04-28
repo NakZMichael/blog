@@ -42,7 +42,6 @@ export const PostItem = ({post}:PostProps)=>{
                     <Typography variant="body1" component="p">
                         {description}
                     </Typography>
-
                 </Paper>
             </a>
         </Link>
