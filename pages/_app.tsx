@@ -24,18 +24,7 @@ export default function MyApp(props) {
       <Head>
         <title>nakazato overflow</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="16x16"></link>
-        <meta name="description" content="Nakazatoの技術ブログ"></meta>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" />
-        <meta property="og:title" content={"nakazato overflow"} />
-        <meta property="og:type" content="blog" />
-        <meta property="og:description" content={"Nakazatoの技術ブログ"} />
-        <meta property="og:url" content={domain} />
-        <meta property="og:site_name" content="nakazato overflow" />
-        <meta property="og:image" content={`${domain}favicon.svg`} />
-        <link rel="canonical" href={domain} />
-        <meta name="twitter:card" content="website" />
-        <meta name="twitter:title" content={"nakazato overflow"} />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
