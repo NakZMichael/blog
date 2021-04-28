@@ -44,6 +44,7 @@ export default function PostPage({ content, frontMatter,url, description }) {
     <BaseLayout>
       <Head>
         <title>{frontMatter.title}</title>
+        <meta name="description" content={description}></meta>
         <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" />
         <meta property="og:title" content={frontMatter.title} />
         <meta property="og:type" content="blog" />

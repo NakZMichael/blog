@@ -47,11 +47,11 @@ export const Header = () =>{
             <Toolbar className={classes.toolbar}>
 
             <Link href="/" >
-                <Button>
-                    <a style={{textDecoration:"none"}}>
-                        <BlogTitle className={classes.blogTitle} />
-                    </a>
-                </Button>
+                <a style={{textDecoration:"none"}}>
+                  <Button>
+                          <BlogTitle className={classes.blogTitle} />
+                  </Button>
+                </a>
             </Link>
 
             <div className={classes.navigation} >
