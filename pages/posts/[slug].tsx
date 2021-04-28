@@ -12,6 +12,7 @@ import { HeadingList } from '../../components/Article/ArticleIndex'
 import fromMarkdown from 'mdast-util-from-markdown'
 import { HeadingVariant } from '../../components/Article/ArticleIndex'
 import { domain } from '../../settings'
+import removeMarkdown from 'remove-markdown'
 
 const components = {
   h1:({children})=>{
@@ -28,7 +29,7 @@ const components = {
 }
 
 
-export default function PostPage({ content, frontMatter,url }) {
+export default function PostPage({ content, frontMatter,url, description }) {
 
   const headingList: HeadingList = []
   const parsedMarkdown = fromMarkdown(content)
@@ -46,9 +47,10 @@ export default function PostPage({ content, frontMatter,url }) {
         <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" />
         <meta property="og:title" content={frontMatter.title} />
         <meta property="og:type" content="blog" />
+        <meta property="og:description" content={description} />
         <meta property="og:url" content={url} />
         <meta property="og:site_name" content="nakazato overflow" />
-        <meta property="og:image" content="/favicon.svg" />
+        <meta property="og:image" content={`${domain}favicon.svg`} />
         <link rel="canonical" href={url} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={frontMatter.title} />
@@ -69,8 +71,8 @@ export const getStaticProps = async ({ params }) => {
 
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.md`)
   const source = fs.readFileSync(postFilePath)
-
   const { content, data } = matter(source)
+  const description = removeMarkdown(String(content)).substr(0,100)
   const date = new Date(data.date) 
   const dateString = format(date,'MM/dd/yyyy')
   data.date = dateString
@@ -79,6 +81,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       url: domain + params.slug,
       content,
+      description:description,
       frontMatter: data,
     },
   }
