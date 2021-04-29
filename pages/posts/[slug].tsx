@@ -4,7 +4,7 @@ import path from 'path'
 import { BaseLayout } from '../../components/Layouts/BaseLayout'
 import { postFilePaths, POSTS_PATH } from '../../serverUtils/mdUtils'
 import ReactMarkdown from 'react-markdown'
-import { Paragraph, CustomLink, ArticleContainer, ArticleTitle, Heading1, Heading2, Heading3, CodeHighlight, CustomImage, ArticleIndex, CustomList } from '../../components/Article'
+import { Paragraph, CustomLink, ArticleContainer, ArticleTitle, Heading1, Heading2, Heading3, CodeHighlight, CustomImage, ArticleIndex, CustomList, Heading4, CustomHr } from '../../components/Article'
 import {format} from 'date-fns'
 import Head from 'next/head';
 import { Typography } from '@material-ui/core'
@@ -15,17 +15,16 @@ import { domain } from '../../settings'
 import removeMarkdown from 'remove-markdown'
 
 const components = {
-  h1:({children})=>{
-    
-    return (<Heading1 children={children}/>)
-  },
+  h1:Heading1,
   h2:Heading2,
   h3:Heading3,
+  h4:Heading4,
   p:Paragraph,
   a: CustomLink,
   li: CustomList,
   code:CodeHighlight,
   img: CustomImage,
+  hr: CustomHr,
 }
 
 

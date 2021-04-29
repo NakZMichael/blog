@@ -22,6 +22,10 @@ const useStyles = makeStyles(theme=>({
         paddingBottom:theme.spacing(1),
         paddingTop:theme.spacing(1),
     },
+    heading4:{
+        paddingBottom:theme.spacing(1),
+        paddingTop:theme.spacing(1),
+    },
 }))
 
 export const Heading1 = ({children}:HeadingProps)=>{
@@ -38,7 +42,7 @@ export const Heading2 = ({children}:HeadingProps)=>{
     return (
         <div className={classes.heading2}>
             <div className={classes.pad} id={children[0]} />
-            <Typography variant="h3" component="h2" style={{fontWeight:"bold"}} id={children[0]} >{children}</Typography>
+            <Typography variant="h4" component="h2" style={{fontWeight:"bold"}} id={children[0]} >{children}</Typography>
         </div>
     )
 }
@@ -48,6 +52,15 @@ export const Heading3 = ({children}:HeadingProps)=>{
         <div className={classes.heading3}>
             <div className={classes.pad} id={children[0]} />
             <Typography variant="h5" component="h3" style={{fontWeight:"bold"}} >{children}</Typography>
+        </div>
+    )
+}
+export const Heading4 = ({children}:HeadingProps)=>{
+    const classes = useStyles()
+    return (
+        <div className={classes.heading4}>
+            <div className={classes.pad} id={children[0]} />
+            <Typography variant="h6" component="h4" style={{fontWeight:"bold"}} >{children}</Typography>
         </div>
     )
 }

@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme =>({
     position:"relative",
     paddingBottom:"160px",
     width:"100%",
-    backgroundColor:theme.palette.common.white
   }
 }));
 
@@ -17,7 +16,7 @@ export const BaseLayout = ({ children }) => {
     return (
       <div className={classes.root}>
           <Header />
-          <div>{children}</div>
+          {children}
           <Footer />
       </div>
     )

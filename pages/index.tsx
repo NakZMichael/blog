@@ -6,7 +6,7 @@ import {BaseLayout} from '../components/Layouts/BaseLayout'
 import { getPostSlug, postFilePaths, POSTS_PATH } from '../serverUtils/mdUtils'
 import removeMarkdown from 'remove-markdown'
 import { PostList } from '../components/PostList/PostList'
-import {format} from 'date-fns'
+import { format, parse } from 'date-fns'
 import Head from 'next/head'
 import { domain } from '../settings'
 
@@ -52,12 +52,13 @@ export default function Index({ posts }) {
 }
 
 export async function getStaticProps(){
-  const posts = postFilePaths.map((filePath) => {
+  let posts = postFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
     const { content, data } = matter(source)
     const contentText= removeMarkdown(String(content))
+    // data.dateがDate型なのでpropsに渡すことができないので変換
     const date = new Date(data.date) 
-    const dateString = format(date,'MM/dd/yyyy')
+    const dateString = format(date,'yyyy/MM/dd')
     data.date = dateString
     const slug = getPostSlug(filePath)
     return {
@@ -65,6 +66,11 @@ export async function getStaticProps(){
       data,
       slug,
     }
+   }).sort((a,b)=>{
+    //  降順に並び替える
+     const a_date = parse(a.data.date, 'yyyy/MM/dd', new Date()).getTime()
+     const b_date = parse(b.data.date, 'yyyy/MM/dd', new Date()).getTime()
+     return  ( - a_date + b_date )
    })
 
   return { props: { posts } }

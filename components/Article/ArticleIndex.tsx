@@ -6,7 +6,8 @@ const useStyles = makeStyles(theme=>({
     root:{
         border:`3px solid ${theme.palette.primary.main}`,
         marginLeft:0,
-        borderRadius:"8px"
+        borderRadius:"8px",
+        marginBottom:theme.spacing(3)
     },
     nestedItem:{
         paddingLeft:theme.spacing(2)
@@ -27,14 +28,12 @@ export const ArticleIndex = ({headingList}:{
         )
     })
     return (
-        <>  
         <Container maxWidth="sm" className={classes.root}>
             <Typography variant="h3" className={classes.header}>Contents</Typography>
             <List>
                 {headingTree}
             </List>
         </Container>
-        </>
     )
 }
 
