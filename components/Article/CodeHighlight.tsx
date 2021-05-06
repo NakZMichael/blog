@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
-import { anOldHope } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { vs2015 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 // backgroundを変更できるようにする。
-anOldHope.hljs.background = 'inherit';
+vs2015.hljs.background = 'inherit';
 
 type CodeHighlightProps = {
     inline?:boolean
@@ -31,13 +31,30 @@ const useStyles = makeStyles(theme=>({
         backgroundColor:"transparent !important",
     },
     multiLineCodeContainer:{
-        borderRadius:"8px",
-        backgroundColor:"#222",
+        borderRadius:"0px 0px 8px 8px",
+        backgroundColor:"#232323",
         padding:theme.spacing(1),
         paddingBottom:theme.spacing(2),
         paddingTop:theme.spacing(2),
         position:"relative",
         boxShadow:"10px 10px 2px 1px rgba(0, 0, 255, .2);"
+    },
+    multiLinCodeHeader:{
+        backgroundColor:"#383838",
+        borderRadius:"8px 8px 0px 0px",
+        height:'20px',
+        width:'100%',
+        display:'flex',
+        justifyItems:'start',
+        alignItems:'center',
+        position:'relative',
+    },
+    multiLineCodeFileName:{
+        color:'rgb(193,193,193)',
+        position:'absolute',
+        display:'block',
+        width:'100%',
+        textAlign:'center',
     },
     meta:{
         backgroundColor:theme.palette.primary.main,
@@ -57,7 +74,7 @@ const useStyles = makeStyles(theme=>({
         top:'0',
         right:'0',
         color:theme.palette.common.white,
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             display:'none',
         },
     }
@@ -84,6 +101,18 @@ export const CodeHighlight = ({node, inline, children, ...props}:CodeHighlightPr
     
 }
 
+const CustomMultiLineHeader = ({fileName})=>{
+    const classes = useStyles()
+    return (
+        <div className={classes.multiLinCodeHeader}>
+            <div style={{height:'13px',width:'13px',borderRadius:'50%',backgroundColor:'rgb(250,74,73)', marginLeft:'10px'}}></div>
+            <div style={{height:'13px',width:'13px',borderRadius:'50%',backgroundColor:'rgb(252,182,37)', marginLeft:'10px'}}></div>
+            <div style={{height:'13px',width:'13px',borderRadius:'50%',backgroundColor:'rgb(42,203,51)', marginLeft:'10px'}}></div>
+            <Typography variant="body2" className={classes.multiLineCodeFileName} >{fileName?fileName:'Untitled-1'}</Typography>
+        </div>
+    )
+}
+
 const CustomInlineCode = ({children,className,...props})=>{
     const classes = useStyles()
     return (
@@ -101,7 +130,8 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
     if(meta){
         return(
             <div className={classes.root}>
-                <Typography variant="body1" className={classes.meta} >{meta}</Typography>
+                <CustomMultiLineHeader fileName={meta} />
+                {/* <Typography variant="body1" className={classes.meta} >{meta}</Typography> */}
                 <div className={classes.multiLineCodeContainer}>
                     <Button 
                         variant="contained" 
@@ -112,7 +142,7 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
                         Copy
                     </Button>
                     <SyntaxHighlighter 
-                        style={anOldHope} 
+                        style={vs2015} 
                         language={language} 
                         PreTag="div" 
                         className={classes.multiLineCode}
@@ -123,6 +153,8 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
         )
     }
     return (
+        <>
+        <CustomMultiLineHeader fileName={undefined} />
         <div className={classNames(classes.multiLineCodeContainer,classes.root)}>
             <Button 
                 variant="contained" 
@@ -133,15 +165,13 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
                 Copy
             </Button>
             <SyntaxHighlighter 
-                    style={{
-                        ...anOldHope,
-                        backgroundColor:"inherit !important",
-                    }} 
+                    style={vs2015} 
                     language={language} 
                     PreTag="div" 
                     className={classNames(classes.multiLineCode)}
                     children={String(children).replace(/\n$/, '')} {...props} 
                     />
         </div>
+        </>
     )
 }
