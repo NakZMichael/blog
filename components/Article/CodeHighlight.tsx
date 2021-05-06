@@ -52,6 +52,9 @@ const useStyles = makeStyles(theme=>({
         top:'0',
         right:'0',
         color:theme.palette.common.white,
+        [theme.breakpoints.down('sm')]: {
+            display:'none',
+        },
     }
 }))
 
