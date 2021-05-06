@@ -38,7 +38,12 @@ export default function PostPage({ content, frontMatter,url, description }) {
       headingList.push(heading)
     }
   })
-  
+  const header = (
+    <>
+      <ArticleTitle title={frontMatter.title} />
+      <Typography variant="h4" style={{paddingBottom:"20px"}}>{frontMatter.date}</Typography>
+    </>
+  )
   return (
     <BaseLayout>
       <Head>
@@ -55,10 +60,8 @@ export default function PostPage({ content, frontMatter,url, description }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={frontMatter.title} />
       </Head>
-        <ArticleContainer>
+        <ArticleContainer header={header}>
           <main>
-            <ArticleTitle title={frontMatter.title} />
-            <Typography variant="h4" style={{paddingBottom:"20px"}}>{frontMatter.date}</Typography>
             <ArticleIndex headingList={headingList}></ArticleIndex>
             <ReactMarkdown components={components} children={content} />
           </main>

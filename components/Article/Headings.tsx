@@ -33,7 +33,7 @@ export const Heading1 = ({children}:HeadingProps)=>{
     return (
         <div className={classes.heading1} >
             <div className={classes.pad} id={children[0]} />
-            <Typography variant="h2" component="h1" style={{fontWeight:"bold"}} >{children}</Typography>
+            <Typography variant="h3" component="h1" style={{fontWeight:"bold"}} >{children}</Typography>
         </div>
     )
 }

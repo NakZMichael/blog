@@ -6,11 +6,12 @@ import Image from 'next/image'
 const useStyles = makeStyles(theme=>({
     root:{
         // textAlign:"center"
+        color:theme.palette.common.white,
     },
     heading:{
         paddingTop:theme.spacing(2),
         paddingBottom:theme.spacing(2),
-        color:theme.palette.primary.dark,
+        color:theme.palette.common.white,
         WebkitTextStroke:"3px rgb(16,19,46)",
     },
     image:{

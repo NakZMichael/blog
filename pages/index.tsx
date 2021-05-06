@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme=>({
   },
   heading:{
     textAlign:"center",
-    color:theme.palette.primary.dark,
+    color:theme.palette.common.white,
     WebkitTextStroke:"3px rgb(16,19,46)",
   }
 }))

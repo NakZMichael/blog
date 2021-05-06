@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from '@material-ui/core';
+import { Button, makeStyles, Typography } from '@material-ui/core';
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { anOldHope } from "react-syntax-highlighter/dist/cjs/styles/hljs";
@@ -13,14 +13,14 @@ type CodeHighlightProps = {
 }
 const useStyles = makeStyles(theme=>({
     root:{
-
+        position:'relative',
     },
     inlineCode:{
         color:theme.palette.common.white,
         backgroundColor:theme.palette.primary.main,
         borderRadius:"3px",
         fontFamily:'monospace',
-        padding:"2px 5px",
+        padding:"0px 3px",
     },
     multiLineCode:{
         backgroundColor:"transparent !important",
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme=>({
         backgroundColor:theme.palette.primary.main,
         color:theme.palette.common.white,
         display:"inline-block",
-        padding:"3px 5px",
+        padding:"0px 5px",
         border:"solid 2px #1C1D30",
         borderBottom:"none",
         marginLeft:"8px",
@@ -46,6 +46,12 @@ const useStyles = makeStyles(theme=>({
         borderTopRightRadius:"8px",
         boxShadow:"10px 10px 2px 1px rgba(0, 0, 255, .2);",
         zIndex:-1
+    },
+    copy:{
+        position:"absolute",
+        top:'0',
+        right:'0',
+        color:theme.palette.common.white,
     }
 }))
 
@@ -89,6 +95,14 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
             <>
                 <Typography variant="body1" className={classes.meta} >{meta}</Typography>
                 <div className={classes.multiLineCodeContainer}>
+                    <Button 
+                        variant="contained" 
+                        color="primary"
+                        className={classes.copy} 
+                        onClick={()=>{navigator.clipboard.writeText(children.toString())}}
+                    >
+                        Copy
+                    </Button>
                     <SyntaxHighlighter 
                         style={anOldHope} 
                         language={language} 
@@ -102,6 +116,14 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
     }
     return (
         <div className={classes.multiLineCodeContainer}>
+            <Button 
+                variant="contained" 
+                color="primary"
+                className={classes.copy} 
+                onClick={()=>{navigator.clipboard.writeText(children.toString())}}
+            >
+                Copy
+            </Button>
             <SyntaxHighlighter 
                     style={anOldHope} 
                     language={language} 
