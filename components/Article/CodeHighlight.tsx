@@ -2,7 +2,10 @@ import { Button, makeStyles, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter';
+
 import { anOldHope } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+// backgroundを変更できるようにする。
+anOldHope.hljs.background = 'inherit';
 
 type CodeHighlightProps = {
     inline?:boolean
@@ -29,7 +32,7 @@ const useStyles = makeStyles(theme=>({
     },
     multiLineCodeContainer:{
         borderRadius:"8px",
-        backgroundColor:"#1C1D30",
+        backgroundColor:"#222",
         padding:theme.spacing(1),
         paddingBottom:theme.spacing(2),
         paddingTop:theme.spacing(2),
@@ -85,8 +88,8 @@ const CustomInlineCode = ({children,className,...props})=>{
     const classes = useStyles()
     return (
         <Typography variant="body1" component="code" className={classes.inlineCode}children={String(children).replace(/\n$/, '')} />
-    )
-}
+        )
+    }
 
 const CustomMultilineCode = ({language,children,meta, ...props }:{
     language?:string
@@ -130,10 +133,13 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
                 Copy
             </Button>
             <SyntaxHighlighter 
-                    style={anOldHope} 
+                    style={{
+                        ...anOldHope,
+                        backgroundColor:"inherit !important",
+                    }} 
                     language={language} 
                     PreTag="div" 
-                    className={classes.multiLineCode}
+                    className={classNames(classes.multiLineCode)}
                     children={String(children).replace(/\n$/, '')} {...props} 
                     />
         </div>
