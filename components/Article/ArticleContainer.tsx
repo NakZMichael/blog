@@ -19,10 +19,14 @@ const useStyles = makeStyles(theme=>({
     },
     header:{
         color:theme.palette.common.white,
-        paddingTop:theme.spacing(2),
-        paddingLeft:theme.spacing(0),
-        paddingRight:theme.spacing(0),
-    }
+        padding:theme.spacing(4),
+        [theme.breakpoints.down('sm')]: {
+            padding:theme.spacing(1),
+            paddingTop:theme.spacing(4),
+            marginLeft:theme.spacing(1),
+            marginRight:theme.spacing(1),
+        },
+    },
 }))
 
 export const ArticleContainer = ({children,header})=>{

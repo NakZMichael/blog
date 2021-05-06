@@ -1,4 +1,5 @@
 import { Button, makeStyles, Typography } from '@material-ui/core';
+import classNames from 'classnames';
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { anOldHope } from "react-syntax-highlighter/dist/cjs/styles/hljs";
@@ -14,6 +15,7 @@ type CodeHighlightProps = {
 const useStyles = makeStyles(theme=>({
     root:{
         position:'relative',
+        fontSize:theme.typography.body1.fontSize,
     },
     inlineCode:{
         color:theme.palette.common.white,
@@ -95,7 +97,7 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
 
     if(meta){
         return(
-            <>
+            <div className={classes.root}>
                 <Typography variant="body1" className={classes.meta} >{meta}</Typography>
                 <div className={classes.multiLineCodeContainer}>
                     <Button 
@@ -114,11 +116,11 @@ const CustomMultilineCode = ({language,children,meta, ...props }:{
                         children={String(children).replace(/\n$/, '')} {...props} 
                     />
                 </div>
-            </>
+            </div>
         )
     }
     return (
-        <div className={classes.multiLineCodeContainer}>
+        <div className={classNames(classes.multiLineCodeContainer,classes.root)}>
             <Button 
                 variant="contained" 
                 color="primary"
