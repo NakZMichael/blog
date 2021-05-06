@@ -37,7 +37,8 @@ const useStyles = makeStyles(theme=>({
         paddingBottom:theme.spacing(2),
         paddingTop:theme.spacing(2),
         position:"relative",
-        boxShadow:"10px 10px 2px 1px rgba(0, 0, 255, .2);"
+        boxShadow:"6px 12px 10px 1px rgba(0, 0, 0, .4);"
+        // boxShadow:"10px 10px 2px 1px rgba(0, 0, 255, .2);"
     },
     multiLinCodeHeader:{
         backgroundColor:"#383838",
