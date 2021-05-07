@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme=>({
     },
     title:{
         paddingBottom:theme.spacing(1),
+        fontWeight:'bold',
     },
     date:{
         paddingBottom:theme.spacing(1),
@@ -30,7 +31,7 @@ export const PostItem = ({post}:PostProps)=>{
     const classes = useStyles()
     let description = post.content
     const theme = useTheme();
-    let displayCharacterLength = useMediaQuery(theme.breakpoints.down('sm'))?50:200
+    let displayCharacterLength = useMediaQuery(theme.breakpoints.down('sm'))?50:150
     let displayCharacterVariantIsSmall= useMediaQuery(theme.breakpoints.down('sm'))
     if(description.length > displayCharacterLength ){
         description = description.substr(0,displayCharacterLength) + ' ...'
