@@ -17,6 +17,11 @@ const useStyles = makeStyles(theme=>({
         backgroundColor:theme.palette.primary.dark,
         color:theme.palette.common.white,
         border:`5px solid ${theme.palette.primary.light}`,
+        [theme.breakpoints.down('xs')]: {
+            padding:theme.spacing(1),
+            marginBottom:theme.spacing(2),
+            marginTop:theme.spacing(2),
+        },
     },
     title:{
         paddingBottom:theme.spacing(1),
