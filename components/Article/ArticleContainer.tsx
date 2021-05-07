@@ -11,20 +11,20 @@ const useStyles = makeStyles(theme=>({
     paper:{
         padding:theme.spacing(4),
         [theme.breakpoints.down('sm')]: {
-            padding:theme.spacing(1),
+            padding:theme.spacing(2),
             paddingTop:theme.spacing(4),
-            marginLeft:theme.spacing(1),
-            marginRight:theme.spacing(1),
+            marginLeft:theme.spacing(2),
+            marginRight:theme.spacing(2),
         },
     },
     header:{
         color:theme.palette.common.white,
         padding:theme.spacing(4),
         [theme.breakpoints.down('sm')]: {
-            padding:theme.spacing(1),
+            padding:theme.spacing(2),
             paddingTop:theme.spacing(4),
-            marginLeft:theme.spacing(1),
-            marginRight:theme.spacing(1),
+            marginLeft:theme.spacing(2),
+            marginRight:theme.spacing(2),
         },
     },
 }))

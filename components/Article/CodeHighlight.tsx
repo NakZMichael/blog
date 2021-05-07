@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme=>({
     root:{
         position:'relative',
         fontSize:theme.typography.body1.fontSize,
+        [theme.breakpoints.down('xs')]: {
+            fontSize:theme.typography.body2.fontSize,
+        },
     },
     inlineCode:{
         color:theme.palette.common.white,
@@ -75,7 +78,7 @@ const useStyles = makeStyles(theme=>({
         top:'0',
         right:'0',
         color:theme.palette.common.white,
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
             display:'none',
         },
     }

@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme=>({
         paddingLeft:theme.spacing(2)
     },
     header:{
-        borderBottom:`3px solid ${theme.palette.primary.main}`
+        borderBottom:`3px solid ${theme.palette.primary.main}`,
+        fontWeight:'bold',
     }
 }))
 
@@ -29,7 +30,7 @@ export const ArticleIndex = ({headingList}:{
     })
     return (
         <Container maxWidth="sm" className={classes.root}>
-            <Typography variant="h3" className={classes.header}>Contents</Typography>
+            <Typography variant="h3" className={classes.header}>Table of Contents</Typography>
             <List>
                 {headingTree}
             </List>

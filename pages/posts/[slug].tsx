@@ -77,7 +77,7 @@ export const getStaticProps = async ({ params }) => {
   const { content, data } = matter(source)
   const description = removeMarkdown(String(content)).substr(0,100)
   const date = new Date(data.date) 
-  const dateString = format(date,'MM/dd/yyyy')
+  const dateString = format(date,'yyyy/MM/dd')
   data.date = dateString
 
   return {
